@@ -1,154 +1,527 @@
 @prefix :      <https://purl.org/ai4s/ontology/planning/multi-agent#> .
 @prefix plan:  <https://ai4society.github.io/planning-ontology#> .
-@prefix owl:    <http://www.w3.org/2002/07/owl#> .
-@prefix rdf:    <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix rdfs:   <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix xsd:    <http://www.w3.org/2001/XMLSchema#> .
-@prefix ma:     <https://purl.org/ai4s/ontology/planning/multi-agent#> .
-@prefix sosa:   <http://www.w3.org/ns/sosa/> .
-@prefix cora:   <http://wwwIEEE1872-2015/cora#> .
-@prefix time:   <http://www.w3.org/2006/time#> .
-@prefix prov:   <http://www.w3.org/ns/prov#> .
-@prefix dct:    <http://purl.org/dc/terms/> .
-@prefix vann:   <http://purl.org/vocab/vann/> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix ma:    <https://purl.org/ai4s/ontology/planning/multi-agent#> .
+@prefix sosa:  <http://www.w3.org/ns/sosa/> .
+@prefix cora:  <http://wwwIEEE1872-2015/cora#> .
+@prefix time:  <http://www.w3.org/2006/time#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix vann:  <http://purl.org/vocab/vann/> .
 
 <https://purl.org/ai4s/ontology/planning/multi-agent> a owl:Ontology ;
     owl:versionIRI <https://purl.org/ai4s/ontology/planning/multi-agent/v1.0.0> ;
     owl:imports <http://www.w3.org/ns/sosa/>,
-                <http://www.w3.org/2006/time#> ,
+                <http://www.w3.org/2006/time#>,
                 <http://www.w3.org/ns/prov#> ;
-    dct:title "Multi-Agent Planning Ontology" ;
+    dct:title "Multi-Agent Planning Ontology"@en ;
     dct:description "An ontology for representing knowledge in Multi-Agent Path Finding (MAPF) problems. This ontology defines concepts such as agents, plans, conflicts, and replanning strategies to support explainable AI in MAPF."@en ;
     dct:creator "Anonymous AI Researcher" ;
     dct:issued "2024-07-22"^^xsd:date ;
     dct:license <http://creativecommons.org/licenses/by/4.0/> ;
+    dct:contributor "This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#."@en ;
     vann:preferredNamespaceUri "https://purl.org/ai4s/ontology/planning/multi-agent#" ;
-    dct:contributor "This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#" .
-
+    vann:preferredNamespacePrefix "ma" ;
+    rdfs:label "Multi-Agent Planning Ontology (maPO)"@en ;
+    rdfs:comment "maPO extends a generic planning ontology with multi-agent path finding (MAPF) concepts such as agents, paths, conflicts, alerts, and replanning strategies, enabling semantic querying and explanation of MAPF executions."@en .
 
 #––––––––––––––––––––––––––––––––––––––––––––––––
 # Classes
 #––––––––––––––––––––––––––––––––––––––––––––––––
 
-ma:Agent             a owl:Class ; rdfs:subClassOf plan:ProblemObject, sosa:Platform .
-ma:AgentState        a owl:Class ; rdfs:subClassOf plan:State .
-ma:AgentSubPlan      a owl:Class ; rdfs:subClassOf plan:Plan .
-ma:OriginalSubPlan   a owl:Class ; rdfs:subClassOf ma:AgentSubPlan .
-ma:ResolvedSubPlan   a owl:Class ; rdfs:subClassOf ma:AgentSubPlan .
-ma:JointPlan         a owl:Class ; rdfs:subClassOf plan:Plan .
-ma:ConflictConstraint a owl:Class ; rdfs:subClassOf plan:DomainRequirement .
-ma:AgentPathSegment  a owl:Class .
-ma:GridLocation      a owl:Class ; rdfs:comment "A structured representation of a grid cell with x and y coordinates." .
+ma:Agent a owl:Class ;
+    rdfs:subClassOf plan:ProblemObject, sosa:Platform ;
+    rdfs:label "Agent"@en ;
+    rdfs:comment "An individual MAPF agent acting in a shared environment, modeled both as a planning problem object and as a platform in the SOSA sense (for integration with sensing/actuation descriptions)."@en .
+
+ma:AgentState a owl:Class ;
+    rdfs:subClassOf plan:State ;
+    rdfs:label "Agent State"@en ;
+    rdfs:comment "A snapshot of an agent’s state at a particular instant during plan execution, typically capturing its location and other relevant properties."@en .
+
+ma:AgentSubPlan a owl:Class ;
+    rdfs:subClassOf plan:Plan ;
+    rdfs:label "Agent Sub-Plan"@en ;
+    rdfs:comment "A per-agent plan describing the sequence of actions taken by a single agent within a multi-agent plan."@en .
+
+ma:OriginalSubPlan a owl:Class ;
+    rdfs:subClassOf ma:AgentSubPlan ;
+    rdfs:label "Original Agent Sub-Plan"@en ;
+    rdfs:comment "The initial sub-plan for an agent before any replanning is triggered by conflict resolution."@en .
+
+ma:ResolvedSubPlan a owl:Class ;
+    rdfs:subClassOf ma:AgentSubPlan ;
+    rdfs:label "Resolved Agent Sub-Plan"@en ;
+    rdfs:comment "A revised sub-plan for an agent produced by a replanning step in response to a detected conflict."@en .
+
+ma:JointPlan a owl:Class ;
+    rdfs:subClassOf plan:Plan ;
+    rdfs:label "Joint Plan"@en ;
+    rdfs:comment "A global MAPF plan obtained by composing individual agent sub-plans into a coordinated, collision-free joint execution."@en .
+
+ma:ConflictConstraint a owl:Class ;
+    rdfs:subClassOf plan:DomainRequirement ;
+    rdfs:label "Conflict Constraint"@en ;
+    rdfs:comment "A domain constraint capturing forbidden regions or interaction patterns between agents that may lead to conflicts in the MAPF problem."@en .
+
+ma:AgentPathSegment a owl:Class ;
+    rdfs:label "Agent Path Segment"@en ;
+    rdfs:comment "A contiguous segment of an agent’s path over a time interval, used for plan segmentation and visualization of movement patterns."@en .
+
+ma:GridLocation a owl:Class ;
+    rdfs:label "Grid Location"@en ;
+    rdfs:comment "A structured representation of a grid cell with x and y coordinates within the MAPF environment."@en .
 
 # Planner enhancements
-ma:AgentPolicy       a owl:Class .
-ma:ObservationMaskSpec a owl:Class .
-ma:CollisionEvent    a owl:Class .
-ma:ConflictAlert     a owl:Class .
-ma:ReplanningStrategy a owl:Class .
-ma:PlannerProcedure  a owl:Class .
-ma:MultiAgentPlanner a owl:Class ; rdfs:subClassOf plan:Planner .
+
+ma:AgentPolicy a owl:Class ;
+    rdfs:label "Agent Policy"@en ;
+    rdfs:comment "A description of the decision-making policy used by an agent (e.g., a learned RL policy) including configuration and training information."@en .
+
+ma:ObservationMaskSpec a owl:Class ;
+    rdfs:label "Observation Mask Specification"@en ;
+    rdfs:comment "A specification of observation channels and masks used by an agent policy to encode partial observability of the environment."@en .
+
+ma:CollisionEvent a owl:Class ;
+    rdfs:label "Collision Event"@en ;
+    rdfs:comment "An event representing a detected collision or conflict between agents at a specific time and location."@en .
+
+ma:ConflictAlert a owl:Class ;
+    rdfs:label "Conflict Alert"@en ;
+    rdfs:comment "An alert raised by the planner or coordinator that selects an agent and context to trigger a local replanning step to resolve a conflict."@en .
+
+ma:ReplanningStrategy a owl:Class ;
+    rdfs:label "Replanning Strategy"@en ;
+    rdfs:comment "A strategy or procedure that describes how conflicts are handled and new sub-plans are generated (e.g., static vs dynamic replanning)."@en .
+
+ma:PlannerProcedure a owl:Class ;
+    rdfs:label "Planner Procedure"@en ;
+    rdfs:comment "A higher-level description of the stages or procedures implemented by a multi-agent planner, including agent selection and conflict-handling policies."@en .
+
+ma:MultiAgentPlanner a owl:Class ;
+    rdfs:subClassOf plan:Planner ;
+    rdfs:label "Multi-Agent Planner"@en ;
+    rdfs:comment "A planner capable of generating joint plans for multiple agents, potentially with integrated conflict detection and resolution mechanisms."@en .
 
 #––––––––––––––––––––––––––––––––––––––––––––––––
 # Object & Data Properties
 #––––––––––––––––––––––––––––––––––––––––––––––––
 
 ## Agent Section
-ma:hasAgentID        a owl:DatatypeProperty ; rdfs:domain ma:Agent ; rdfs:range xsd:string .
-ma:hasCapability     a owl:ObjectProperty ; rdfs:domain ma:Agent ; rdfs:range cora:Capability .
-ma:hasInitialLocation a owl:ObjectProperty ; rdfs:domain ma:Agent ; rdfs:range ma:GridLocation .
-ma:hasGoalLocation   a owl:ObjectProperty ; rdfs:domain ma:Agent ; rdfs:range ma:GridLocation .
-ma:executesAction    a owl:ObjectProperty ; rdfs:domain ma:Agent ; rdfs:range plan:Action .
-ma:atLocation        a owl:ObjectProperty ; rdfs:domain <http://www.w3.org/2002/07/owl#Thing> ; rdfs:range ma:GridLocation . # Assuming Obstacle is a Thing
-ma:xCoordinate       a owl:DatatypeProperty ; rdfs:domain ma:GridLocation ; rdfs:range xsd:integer .
-ma:yCoordinate       a owl:DatatypeProperty ; rdfs:domain ma:GridLocation ; rdfs:range xsd:integer .
+
+ma:hasAgentID a owl:DatatypeProperty ;
+    rdfs:domain ma:Agent ;
+    rdfs:range xsd:string ;
+    rdfs:label "has agent ID"@en ;
+    rdfs:comment "Associates an agent with its identifier from the underlying MAPF planner or environment."@en .
+
+ma:hasCapability a owl:ObjectProperty ;
+    rdfs:domain ma:Agent ;
+    rdfs:range cora:Capability ;
+    rdfs:label "has capability"@en ;
+    rdfs:comment "Links an agent to its capabilities, as described in the CORA ontology, such as motion or sensing capabilities."@en .
+
+ma:hasInitialLocation a owl:ObjectProperty ;
+    rdfs:domain ma:Agent ;
+    rdfs:range ma:GridLocation ;
+    rdfs:label "has initial location"@en ;
+    rdfs:comment "Links an agent to its initial grid location at the start of the MAPF problem."@en .
+
+ma:hasGoalLocation a owl:ObjectProperty ;
+    rdfs:domain ma:Agent ;
+    rdfs:range ma:GridLocation ;
+    rdfs:label "has goal location"@en ;
+    rdfs:comment "Links an agent to its goal grid location in the MAPF problem."@en .
+
+ma:executesAction a owl:ObjectProperty ;
+    rdfs:domain ma:Agent ;
+    rdfs:range plan:Action ;
+    rdfs:label "executes action"@en ;
+    rdfs:comment "Relates an agent to actions it executes as part of its plan."@en .
+
+ma:atLocation a owl:ObjectProperty ;
+    rdfs:domain owl:Thing ;
+    rdfs:range ma:GridLocation ;
+    rdfs:label "at location"@en ;
+    rdfs:comment "Associates any entity (e.g., an agent or obstacle) with a grid location."@en .
+
+ma:xCoordinate a owl:DatatypeProperty ;
+    rdfs:domain ma:GridLocation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "x coordinate"@en ;
+    rdfs:comment "The x-coordinate of a grid location."@en .
+
+ma:yCoordinate a owl:DatatypeProperty ;
+    rdfs:domain ma:GridLocation ;
+    rdfs:range xsd:integer ;
+    rdfs:label "y coordinate"@en ;
+    rdfs:comment "The y-coordinate of a grid location."@en .
 
 ## Plan Enhancements
-ma:belongsToAgent    a owl:ObjectProperty ; rdfs:domain ma:AgentSubPlan ; rdfs:range ma:Agent .
-ma:hasPlanCost       a owl:DatatypeProperty ; rdfs:domain ma:AgentSubPlan ; rdfs:range xsd:decimal .
-ma:planData          a owl:ObjectProperty ; rdfs:domain ma:AgentSubPlan, ma:JointPlan ; rdfs:range ma:AgentPathSegment .
-ma:composedOfSubPlans a owl:ObjectProperty ; rdfs:domain ma:JointPlan ; rdfs:range ma:AgentSubPlan .
-ma:hasGlobalMakespan a owl:DatatypeProperty ; rdfs:domain ma:JointPlan ; rdfs:range xsd:decimal .
-ma:usedAlertSet      a owl:ObjectProperty ; rdfs:domain ma:JointPlan ; rdfs:range ma:ConflictAlert .
-ma:conflictResolutionProtocol a owl:DatatypeProperty ; rdfs:domain ma:JointPlan ; rdfs:range xsd:string .
+
+ma:belongsToAgent a owl:ObjectProperty ;
+    rdfs:domain ma:AgentSubPlan ;
+    rdfs:range ma:Agent ;
+    rdfs:label "belongs to agent"@en ;
+    rdfs:comment "Links an agent sub-plan to the agent whose behavior it describes."@en .
+
+ma:hasPlanCost a owl:DatatypeProperty ;
+    rdfs:domain ma:AgentSubPlan ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has plan cost"@en ;
+    rdfs:comment "Stores the cost of an agent sub-plan (e.g., path length or time)."@en .
+
+ma:planData a owl:ObjectProperty ;
+    rdfs:domain ma:AgentSubPlan, ma:JointPlan ;
+    rdfs:range ma:AgentPathSegment ;
+    rdfs:label "has path data"@en ;
+    rdfs:comment "Associates a plan (agent-level or joint) with one or more path segments representing its execution."@en .
+
+ma:composedOfSubPlans a owl:ObjectProperty ;
+    rdfs:domain ma:JointPlan ;
+    rdfs:range ma:AgentSubPlan ;
+    rdfs:label "composed of sub-plans"@en ;
+    rdfs:comment "Indicates that a joint plan is composed of the sub-plans of individual agents."@en .
+
+ma:hasGlobalMakespan a owl:DatatypeProperty ;
+    rdfs:domain ma:JointPlan ;
+    rdfs:range xsd:decimal ;
+    rdfs:label "has global makespan"@en ;
+    rdfs:comment "Stores the makespan (total execution time) of a joint plan."@en .
+
+ma:usedAlertSet a owl:ObjectProperty ;
+    rdfs:domain ma:JointPlan ;
+    rdfs:range ma:ConflictAlert ;
+    rdfs:label "used alert set"@en ;
+    rdfs:comment "Links a joint plan to the set of conflict alerts that were used during its construction and refinement."@en .
+
+ma:conflictResolutionProtocol a owl:DatatypeProperty ;
+    rdfs:domain ma:JointPlan ;
+    rdfs:range xsd:string ;
+    rdfs:label "conflict resolution protocol"@en ;
+    rdfs:comment "Describes the high-level conflict resolution protocol or strategy used for a joint plan."@en .
 
 ## Problem Enhancements
-ma:hasAgentSet       a owl:ObjectProperty ; rdfs:domain plan:PlanningProblem ; rdfs:range ma:Agent .
-ma:hasInitialStates  a owl:ObjectProperty ; rdfs:domain plan:PlanningProblem ; rdfs:range ma:AgentState .
-ma:hasGoalStates     a owl:ObjectProperty ; rdfs:domain plan:PlanningProblem ; rdfs:range ma:AgentState .
-ma:hasConflictConstraint a owl:ObjectProperty ; rdfs:domain plan:PlanningProblem ; rdfs:range ma:ConflictConstraint .
-ma:involvesAgents    a owl:ObjectProperty ; rdfs:domain ma:ConflictConstraint ; rdfs:range ma:Agent .
-ma:conflictType      a owl:DatatypeProperty ; rdfs:domain ma:ConflictConstraint ; rdfs:range xsd:string .
-ma:forbiddenRegion   a owl:ObjectProperty ; rdfs:domain ma:ConflictConstraint ; rdfs:range plan:Region .
+
+ma:hasAgentSet a owl:ObjectProperty ;
+    rdfs:domain plan:PlanningProblem ;
+    rdfs:range ma:Agent ;
+    rdfs:label "has agent set"@en ;
+    rdfs:comment "Links a planning problem to the agents that participate in it."@en .
+
+ma:hasInitialStates a owl:ObjectProperty ;
+    rdfs:domain plan:PlanningProblem ;
+    rdfs:range ma:AgentState ;
+    rdfs:label "has initial states"@en ;
+    rdfs:comment "Associates a planning problem with initial states for its agents."@en .
+
+ma:hasGoalStates a owl:ObjectProperty ;
+    rdfs:domain plan:PlanningProblem ;
+    rdfs:range ma:AgentState ;
+    rdfs:label "has goal states"@en ;
+    rdfs:comment "Associates a planning problem with goal states for its agents."@en .
+
+ma:hasConflictConstraint a owl:ObjectProperty ;
+    rdfs:domain plan:PlanningProblem ;
+    rdfs:range ma:ConflictConstraint ;
+    rdfs:label "has conflict constraint"@en ;
+    rdfs:comment "Links a planning problem to conflict constraints that restrict agent interactions or regions."@en .
+
+ma:involvesAgents a owl:ObjectProperty ;
+    rdfs:domain ma:ConflictConstraint ;
+    rdfs:range ma:Agent ;
+    rdfs:label "involves agents"@en ;
+    rdfs:comment "Specifies the agents that are involved in a given conflict constraint."@en .
+
+ma:conflictType a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictConstraint ;
+    rdfs:range xsd:string ;
+    rdfs:label "conflict type"@en ;
+    rdfs:comment "Describes the type of conflict constrained (e.g., vertex conflict, edge conflict)."@en .
+
+ma:forbiddenRegion a owl:ObjectProperty ;
+    rdfs:domain ma:ConflictConstraint ;
+    rdfs:range plan:Region ;
+    rdfs:label "forbidden region"@en ;
+    rdfs:comment "Links a conflict constraint to a region that is forbidden or restricted for certain agents."@en .
 
 ## Provenance and Replanning
-ma:derivesFrom       a owl:ObjectProperty ; rdfs:subPropertyOf prov:wasDerivedFrom ; rdfs:domain ma:ResolvedSubPlan ; rdfs:range ma:OriginalSubPlan .
-ma:generatedBy       a owl:ObjectProperty ; rdfs:subPropertyOf prov:wasGeneratedBy ; rdfs:domain ma:ResolvedSubPlan ; rdfs:range prov:Activity .
-ma:resolvesConflict  a owl:ObjectProperty ;
-                     rdfs:comment "Connects a revised plan to the conflict it solves." ;
-                     rdfs:domain ma:ResolvedSubPlan ;
-                     rdfs:range ma:CollisionEvent .
 
-ma:triggeredBy       a owl:ObjectProperty ;
-                     rdfs:comment "Shows which alert initiated a replanning action." ;
-                     rdfs:domain ma:ReplanningStrategy ;
-                     rdfs:range ma:ConflictAlert .
+ma:derivesFrom a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasDerivedFrom ;
+    rdfs:domain ma:ResolvedSubPlan ;
+    rdfs:range ma:OriginalSubPlan ;
+    rdfs:label "derives from"@en ;
+    rdfs:comment "Indicates that a resolved sub-plan is derived from a specific original sub-plan."@en .
+
+ma:generatedBy a owl:ObjectProperty ;
+    rdfs:subPropertyOf prov:wasGeneratedBy ;
+    rdfs:domain ma:ResolvedSubPlan ;
+    rdfs:range prov:Activity ;
+    rdfs:label "generated by"@en ;
+    rdfs:comment "Relates a resolved sub-plan to the replanning activity that generated it."@en .
+
+ma:resolvesConflict a owl:ObjectProperty ;
+    rdfs:domain ma:ResolvedSubPlan ;
+    rdfs:range ma:CollisionEvent ;
+    rdfs:label "resolves conflict"@en ;
+    rdfs:comment "Connects a revised sub-plan to the collision event it is intended to resolve."@en .
+
+ma:triggeredBy a owl:ObjectProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range ma:ConflictAlert ;
+    rdfs:label "triggered by"@en ;
+    rdfs:comment "Links a replanning strategy to the conflict alert that triggered it."@en .
 
 ma:selectionRationale a owl:DatatypeProperty ;
-                      rdfs:comment "Explains why a specific agent was chosen for a conflict alert." ;
-                      rdfs:domain ma:ConflictAlert ;
-                      rdfs:range xsd:string .
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:string ;
+    rdfs:label "selection rationale"@en ;
+    rdfs:comment "Provides a textual explanation of why a specific agent was chosen as the target of a conflict alert."@en .
 
 ## AgentPolicy & Observation Properties
-ma:policyName        a owl:DatatypeProperty ; rdfs:domain ma:AgentPolicy ; rdfs:range xsd:string .
-ma:trainedOnEnvironment a owl:DatatypeProperty ; rdfs:domain ma:AgentPolicy ; rdfs:range xsd:string .
-ma:observationChannels a owl:DatatypeProperty ; rdfs:domain ma:AgentPolicy ; rdfs:range xsd:string .
-ma:actionSpace       a owl:DatatypeProperty ; rdfs:domain ma:AgentPolicy ; rdfs:range xsd:string .
-ma:hasChannel        a owl:DatatypeProperty ; rdfs:domain ma:ObservationMaskSpec ; rdfs:range xsd:string .
-ma:maskDimension     a owl:DatatypeProperty ; rdfs:domain ma:ObservationMaskSpec ; rdfs:range xsd:string .
+
+ma:policyName a owl:DatatypeProperty ;
+    rdfs:domain ma:AgentPolicy ;
+    rdfs:range xsd:string ;
+    rdfs:label "policy name"@en ;
+    rdfs:comment "The human-readable name of an agent policy (e.g., the RL architecture or configuration name)."@en .
+
+ma:trainedOnEnvironment a owl:DatatypeProperty ;
+    rdfs:domain ma:AgentPolicy ;
+    rdfs:range xsd:string ;
+    rdfs:label "trained on environment"@en ;
+    rdfs:comment "Describes the environment or scenario distribution on which the agent policy was trained."@en .
+
+ma:observationChannels a owl:DatatypeProperty ;
+    rdfs:domain ma:AgentPolicy ;
+    rdfs:range xsd:string ;
+    rdfs:label "observation channels"@en ;
+    rdfs:comment "Lists the observation channels exposed to the policy (e.g., grid layers, agent positions, obstacles)."@en .
+
+ma:actionSpace a owl:DatatypeProperty ;
+    rdfs:domain ma:AgentPolicy ;
+    rdfs:range xsd:string ;
+    rdfs:label "action space"@en ;
+    rdfs:comment "Describes the available actions for the policy (e.g., up/down/left/right/stay)."@en .
+
+ma:hasChannel a owl:DatatypeProperty ;
+    rdfs:domain ma:ObservationMaskSpec ;
+    rdfs:range xsd:string ;
+    rdfs:label "has channel"@en ;
+    rdfs:comment "Names an observation channel included in an observation mask specification."@en .
+
+ma:maskDimension a owl:DatatypeProperty ;
+    rdfs:domain ma:ObservationMaskSpec ;
+    rdfs:range xsd:string ;
+    rdfs:label "mask dimension"@en ;
+    rdfs:comment "Describes the dimensionality or shape of the observation mask (e.g., 11x11 window)."@en .
 
 ## CollisionEvent Properties
-ma:conflictID        a owl:DatatypeProperty ; rdfs:domain ma:CollisionEvent ; rdfs:range xsd:string .
-ma:occursAtTime      a owl:ObjectProperty ; rdfs:domain ma:CollisionEvent, ma:AgentState ; rdfs:range time:Instant .
-ma:conflictTypeEvent a owl:DatatypeProperty ; rdfs:domain ma:CollisionEvent ; rdfs:range xsd:string .
-ma:involvesAgentsEvent a owl:ObjectProperty ; rdfs:domain ma:CollisionEvent ; rdfs:range ma:Agent .
-ma:conflictLocation  a owl:ObjectProperty ; rdfs:domain ma:CollisionEvent ; rdfs:range ma:GridLocation .
+
+ma:conflictID a owl:DatatypeProperty ;
+    rdfs:domain ma:CollisionEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "conflict ID"@en ;
+    rdfs:comment "Identifier for a collision event in the planner’s logs or the knowledge graph."@en .
+
+ma:occursAtTime a owl:ObjectProperty ;
+    rdfs:domain ma:CollisionEvent, ma:AgentState ;
+    rdfs:range time:Instant ;
+    rdfs:label "occurs at time"@en ;
+    rdfs:comment "Links a collision event or agent state to the time instant at which it occurs."@en .
+
+ma:conflictTypeEvent a owl:DatatypeProperty ;
+    rdfs:domain ma:CollisionEvent ;
+    rdfs:range xsd:string ;
+    rdfs:label "conflict event type"@en ;
+    rdfs:comment "Specifies the type of collision event (e.g., vertex conflict, edge conflict) detected in execution."@en .
+
+ma:involvesAgentsEvent a owl:ObjectProperty ;
+    rdfs:domain ma:CollisionEvent ;
+    rdfs:range ma:Agent ;
+    rdfs:label "involves agents (event)"@en ;
+    rdfs:comment "Links a collision event to the agents involved in that event."@en .
+
+ma:conflictLocation a owl:ObjectProperty ;
+    rdfs:domain ma:CollisionEvent ;
+    rdfs:range ma:GridLocation ;
+    rdfs:label "conflict location"@en ;
+    rdfs:comment "Specifies the grid location at which a collision event occurs."@en .
 
 ## ConflictAlert Properties
-ma:alertID           a owl:DatatypeProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range xsd:string .
-ma:alertsConflict    a owl:ObjectProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range ma:CollisionEvent .
-ma:targetAgent       a owl:ObjectProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range ma:Agent .
-ma:rewindWindow      a owl:DatatypeProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range xsd:integer .
-ma:alertType         a owl:DatatypeProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range xsd:string .
-ma:staticForbiddenCells a owl:DatatypeProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range xsd:string .
-ma:dynamicForbiddenPath a owl:DatatypeProperty ; rdfs:domain ma:ConflictAlert ; rdfs:range xsd:string .
+
+ma:alertID a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:string ;
+    rdfs:label "alert ID"@en ;
+    rdfs:comment "Identifier for a conflict alert in the planner logs or knowledge graph."@en .
+
+ma:alertsConflict a owl:ObjectProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range ma:CollisionEvent ;
+    rdfs:label "alerts conflict"@en ;
+    rdfs:comment "Associates a conflict alert with the collision event it refers to."@en .
+
+ma:targetAgent a owl:ObjectProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range ma:Agent ;
+    rdfs:label "target agent"@en ;
+    rdfs:comment "Indicates the agent selected as the target for replanning in response to a conflict alert."@en .
+
+ma:rewindWindow a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:integer ;
+    rdfs:label "rewind window"@en ;
+    rdfs:comment "The temporal window (in timesteps) over which an agent may rewind during replanning triggered by this alert."@en .
+
+ma:alertType a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:string ;
+    rdfs:label "alert type"@en ;
+    rdfs:comment "Describes the type of conflict alert (e.g., static, dynamic, local, global)."@en .
+
+ma:staticForbiddenCells a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:string ;
+    rdfs:label "static forbidden cells"@en ;
+    rdfs:comment "Encodes static forbidden cells communicated in the alert, e.g., as a serialized list or mask."@en .
+
+ma:dynamicForbiddenPath a owl:DatatypeProperty ;
+    rdfs:domain ma:ConflictAlert ;
+    rdfs:range xsd:string ;
+    rdfs:label "dynamic forbidden path"@en ;
+    rdfs:comment "Encodes a dynamic forbidden path (e.g., moving obstacle trajectory) communicated in the alert."@en .
 
 ## AgentPathSegment Properties
-ma:belongsToAgentSegment a owl:ObjectProperty ; rdfs:domain ma:AgentPathSegment ; rdfs:range ma:Agent .
-ma:hasValidTime      a owl:ObjectProperty ; rdfs:domain ma:AgentPathSegment ; rdfs:range time:Interval .
-ma:hasPathSequence   a owl:ObjectProperty ; rdfs:domain ma:AgentPathSegment ; rdfs:range rdf:List .
+
+ma:belongsToAgentSegment a owl:ObjectProperty ;
+    rdfs:domain ma:AgentPathSegment ;
+    rdfs:range ma:Agent ;
+    rdfs:label "belongs to agent (segment)"@en ;
+    rdfs:comment "Links an agent path segment to the agent whose movement it represents."@en .
+
+ma:hasValidTime a owl:ObjectProperty ;
+    rdfs:domain ma:AgentPathSegment ;
+    rdfs:range time:Interval ;
+    rdfs:label "has valid time interval"@en ;
+    rdfs:comment "Associates a path segment with the time interval during which it is executed."@en .
+
+ma:hasPathSequence a owl:ObjectProperty ;
+    rdfs:domain ma:AgentPathSegment ;
+    rdfs:range rdf:List ;
+    rdfs:label "has path sequence"@en ;
+    rdfs:comment "Represents the ordered sequence of grid locations for a path segment as an RDF list."@en .
 
 ## ReplanningStrategy Properties
-ma:strategyID        a owl:DatatypeProperty ; rdfs:domain ma:ReplanningStrategy ; rdfs:range xsd:string .
-ma:usedStaticReplanning a owl:DatatypeProperty ; rdfs:domain ma:ReplanningStrategy ; rdfs:range xsd:boolean .
-ma:usedDynamicReplanning a owl:DatatypeProperty ; rdfs:domain ma:ReplanningStrategy ; rdfs:range xsd:boolean .
-ma:observedForbiddenCells a owl:ObjectProperty ; rdfs:domain ma:ReplanningStrategy ; rdfs:range plan:Cell .
-ma:observedForbiddenSegment a owl:ObjectProperty ; rdfs:domain ma:ReplanningStrategy ; rdfs:range ma:AgentPathSegment .
+
+ma:strategyID a owl:DatatypeProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range xsd:string ;
+    rdfs:label "strategy ID"@en ;
+    rdfs:comment "Identifier for a replanning strategy instance."@en .
+
+ma:usedStaticReplanning a owl:DatatypeProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "used static replanning"@en ;
+    rdfs:comment "Indicates whether the strategy used static replanning constraints (e.g., fixed forbidden cells)."@en .
+
+ma:usedDynamicReplanning a owl:DatatypeProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "used dynamic replanning"@en ;
+    rdfs:comment "Indicates whether the strategy used dynamic replanning constraints (e.g., moving forbidden paths)."@en .
+
+ma:observedForbiddenCells a owl:ObjectProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range plan:Cell ;
+    rdfs:label "observed forbidden cells"@en ;
+    rdfs:comment "Links a replanning strategy to the specific cells observed as forbidden during execution."@en .
+
+ma:observedForbiddenSegment a owl:ObjectProperty ;
+    rdfs:domain ma:ReplanningStrategy ;
+    rdfs:range ma:AgentPathSegment ;
+    rdfs:label "observed forbidden segment"@en ;
+    rdfs:comment "Links a replanning strategy to a path segment that is treated as forbidden during replanning."@en .
 
 ## PlannerProcedure Properties
-ma:procedureID       a owl:DatatypeProperty ; rdfs:domain ma:PlannerProcedure ; rdfs:range xsd:string .
-ma:implementsStage   a owl:DatatypeProperty ; rdfs:domain ma:PlannerProcedure ; rdfs:range xsd:string .
-ma:agentSelectionPolicy a owl:DatatypeProperty ; rdfs:domain ma:PlannerProcedure ; rdfs:range xsd:string .
-ma:rewindWindowDefault a owl:DatatypeProperty ; rdfs:domain ma:PlannerProcedure ; rdfs:range xsd:integer .
-ma:hasRationale      a owl:DatatypeProperty ; rdfs:domain ma:PlannerProcedure ; rdfs:range xsd:string .
+
+ma:procedureID a owl:DatatypeProperty ;
+    rdfs:domain ma:PlannerProcedure ;
+    rdfs:range xsd:string ;
+    rdfs:label "procedure ID"@en ;
+    rdfs:comment "Identifier for a planner procedure or stage."@en .
+
+ma:implementsStage a owl:DatatypeProperty ;
+    rdfs:domain ma:PlannerProcedure ;
+    rdfs:range xsd:string ;
+    rdfs:label "implements stage"@en ;
+    rdfs:comment "Describes which pipeline stage (e.g., conflict detection, agent selection) a procedure implements."@en .
+
+ma:agentSelectionPolicy a owl:DatatypeProperty ;
+    rdfs:domain ma:PlannerProcedure ;
+    rdfs:range xsd:string ;
+    rdfs:label "agent selection policy"@en ;
+    rdfs:comment "Describes the policy used to select agents for replanning or conflict resolution (e.g., earliest arrival, random)."@en .
+
+ma:rewindWindowDefault a owl:DatatypeProperty ;
+    rdfs:domain ma:PlannerProcedure ;
+    rdfs:range xsd:integer ;
+    rdfs:label "default rewind window"@en ;
+    rdfs:comment "Default temporal rewind window used by the procedure when triggering replanning."@en .
+
+ma:hasRationale a owl:DatatypeProperty ;
+    rdfs:domain ma:PlannerProcedure ;
+    rdfs:range xsd:string ;
+    rdfs:label "procedure rationale"@en ;
+    rdfs:comment "Provides a textual rationale or description of a planner procedure’s design and trade-offs."@en .
 
 ## MultiAgentPlanner Properties
-ma:ofPlannerType     a owl:DatatypeProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range xsd:string .
-ma:implementsProcedure a owl:ObjectProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range ma:PlannerProcedure .
-ma:generatesPlan     a owl:ObjectProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range plan:Plan .
-ma:supportsConflictDetection a owl:DatatypeProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range xsd:boolean .
-ma:communicationOverhead a owl:DatatypeProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range xsd:string .
-ma:hasPerformanceTradeoff a owl:DatatypeProperty ; rdfs:domain ma:MultiAgentPlanner ; rdfs:range xsd:string .
+
+ma:ofPlannerType a owl:DatatypeProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range xsd:string ;
+    rdfs:label "planner type"@en ;
+    rdfs:comment "Indicates the type or family of a multi-agent planner (e.g., RL-based, search-based, hybrid)."@en .
+
+ma:implementsProcedure a owl:ObjectProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range ma:PlannerProcedure ;
+    rdfs:label "implements procedure"@en ;
+    rdfs:comment "Links a multi-agent planner to the procedures it implements as part of its pipeline."@en .
+
+ma:generatesPlan a owl:ObjectProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range plan:Plan ;
+    rdfs:label "generates plan"@en ;
+    rdfs:comment "Relates a multi-agent planner to the plans it generates."@en .
+
+ma:supportsConflictDetection a owl:DatatypeProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "supports conflict detection"@en ;
+    rdfs:comment "Indicates whether the planner has built-in conflict detection capabilities."@en .
+
+ma:communicationOverhead a owl:DatatypeProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range xsd:string ;
+    rdfs:label "communication overhead"@en ;
+    rdfs:comment "Describes communication overhead characteristics of the planner (e.g., centralized, distributed low-bandwidth)."@en .
+
+ma:hasPerformanceTradeoff a owl:DatatypeProperty ;
+    rdfs:domain ma:MultiAgentPlanner ;
+    rdfs:range xsd:string ;
+    rdfs:label "performance trade-off"@en ;
+    rdfs:comment "Captures performance trade-offs of the planner (e.g., speed vs. solution quality, communication vs. optimality)."@en .
 
 ## AgentState Properties
-ma:agentAt           a owl:ObjectProperty ; rdfs:domain ma:AgentState ; rdfs:range ma:GridLocation .
+
+ma:agentAt a owl:ObjectProperty ;
+    rdfs:domain ma:AgentState ;
+    rdfs:range ma:GridLocation ;
+    rdfs:label "agent at"@en ;
+    rdfs:comment "Links an agent state to the grid location where the agent is at that state."@en .

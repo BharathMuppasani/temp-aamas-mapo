@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Multi-Agent Planning Ontology</title>
+    <title>Multi-Agent Planning Ontology (maPO)</title>
     <style>
         #pylode {
             position: fixed;
@@ -289,7 +289,8 @@ td {
     ],
     "https://schema.org/contributor": [
       {
-        "@value": "This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#"
+        "@language": "en",
+        "@value": "This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#."
       }
     ],
     "https://schema.org/creator": [
@@ -307,6 +308,10 @@ td {
       {
         "@language": "en",
         "@value": "An ontology for representing knowledge in Multi-Agent Path Finding (MAPF) problems. This ontology defines concepts such as agents, plans, conflicts, and replanning strategies to support explainable AI in MAPF."
+      },
+      {
+        "@language": "en",
+        "@value": "maPO extends a generic planning ontology with multi-agent path finding (MAPF) concepts such as agents, paths, conflicts, alerts, and replanning strategies, enabling semantic querying and explanation of MAPF executions."
       }
     ],
     "https://schema.org/license": [
@@ -316,7 +321,12 @@ td {
     ],
     "https://schema.org/name": [
       {
+        "@language": "en",
         "@value": "Multi-Agent Planning Ontology"
+      },
+      {
+        "@language": "en",
+        "@value": "Multi-Agent Planning Ontology (maPO)"
       }
     ]
   }
@@ -326,7 +336,7 @@ td {
   <body>
     <div id="content">
       <div class="section" id="metadata">
-        <h1>Multi-Agent Planning Ontology</h1>
+        <h1>Multi-Agent Planning OntologyMulti-Agent Planning Ontology (maPO)</h1>
         <h2>Metadata</h2>
         <dl>
           <div>
@@ -341,7 +351,12 @@ td {
             <dt>
               <a class="hover_property" href="http://purl.org/dc/terms/title" title="A name given to the resource. Defined in DCMI Metadata Terms">Title</a>
             </dt>
-            <dd><p>Multi-Agent Planning Ontology</p></dd>
+            <dd>
+              <ul>
+                <li><p>Multi-Agent Planning Ontology</p></li>
+                <li><p>Multi-Agent Planning Ontology (maPO)</p></li>
+              </ul>
+            </dd>
           </div>
           <div>
             <dt>
@@ -353,7 +368,7 @@ td {
             <dt>
               <a class="hover_property" href="http://purl.org/dc/terms/contributor" title="An entity responsible for making contributions to the resource. Defined in DCMI Metadata Terms">Contributor</a>
             </dt>
-            <dd><p>This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#</p></dd>
+            <dd><p>This ontology extends the base Planning Ontology available at https://ai4society.github.io/planning-ontology#.</p></dd>
           </div>
           <div>
             <dt>
@@ -374,8 +389,14 @@ td {
               <a class="hover_property" href="http://www.w3.org/2002/07/owl#versionIRI" title="The property that identifies the version IRI of an ontology. Defined in The OWL 2 Schema vocabulary (OWL 2)">Version Iri</a>
             </dt>
             <dd>
-              <a href="#v1.0.0">https://purl.org/ai4s/ontology/planning/multi-agent/v1.0.0</a>
+              <a href="https://purl.org/ai4s/ontology/planning/multi-agent/v1.0.0">https://purl.org/ai4s/ontology/planning/multi-agent/v1.0.0</a>
             </dd>
+          </div>
+          <div>
+            <dt>
+              <a class="hover_property" href="http://purl.org/vocab/vann/preferredNamespacePrefix" title="None. Defined in None">Preferred Namespace Prefix</a>
+            </dt>
+            <dd><p>ma</p></dd>
           </div>
           <div>
             <dt>
@@ -389,7 +410,12 @@ td {
             <dt>
               <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
             </dt>
-            <dd><p>An ontology for representing knowledge in Multi-Agent Path Finding (MAPF) problems. This ontology defines concepts such as agents, plans, conflicts, and replanning strategies to support explainable AI in MAPF.</p></dd>
+            <dd>
+              <ul>
+                <li><p>An ontology for representing knowledge in Multi-Agent Path Finding (MAPF) problems. This ontology defines concepts such as agents, plans, conflicts, and replanning strategies to support explainable AI in MAPF.</p></li>
+                <li><p>maPO extends a generic planning ontology with multi-agent path finding (MAPF) concepts such as agents, paths, conflicts, alerts, and replanning strategies, enabling semantic querying and explanation of MAPF executions.</p></li>
+              </ul>
+            </dd>
           </div>
         </dl>
       </div>
@@ -408,15 +434,21 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>An individual MAPF agent acting in a shared environment, modeled both as a planning problem object and as a platform in the SOSA sense (for integration with sensing/actuation descriptions).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
                 <ul>
                   <li>
-                    <a href="#ProblemObject">plan:ProblemObject</a>
+                    <a href="https://ai4society.github.io/planning-ontology#ProblemObject">plan:ProblemObject</a>
                   </li>
                   <li>
-                    <a href="#Platform">sosa:Platform</a>
+                    <a href="http://www.w3.org/ns/sosa/Platform">sosa:Platform</a>
                   </li>
                 </ul>
               </td>
@@ -429,31 +461,31 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#hasAgentID">ma:hasAgentID</a>
+                      <a href="#hasAgentID">has agent ID</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasCapability">ma:hasCapability</a>
+                      <a href="#hasCapability">has capability</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasInitialLocation">ma:hasInitialLocation</a>
+                      <a href="#hasInitialLocation">has initial location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasGoalLocation">ma:hasGoalLocation</a>
+                      <a href="#hasGoalLocation">has goal location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#executesAction">ma:executesAction</a>
+                      <a href="#executesAction">executes action</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -468,37 +500,37 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#belongsToAgent">ma:belongsToAgent</a>
+                      <a href="#belongsToAgent">belongs to agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasAgentSet">ma:hasAgentSet</a>
+                      <a href="#hasAgentSet">has agent set</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#involvesAgents">ma:involvesAgents</a>
+                      <a href="#involvesAgents">involves agents</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#involvesAgentsEvent">ma:involvesAgentsEvent</a>
+                      <a href="#involvesAgentsEvent">involves agents (event)</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#targetAgent">ma:targetAgent</a>
+                      <a href="#targetAgent">target agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#belongsToAgentSegment">ma:belongsToAgentSegment</a>
+                      <a href="#belongsToAgentSegment">belongs to agent (segment)</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -520,10 +552,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A snapshot of an agent’s state at a particular instant during plan execution, typically capturing its location and other relevant properties.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="#State">plan:State</a>
+                <a href="https://ai4society.github.io/planning-ontology#State">plan:State</a>
               </td>
             </tr>
             <tr>
@@ -534,13 +572,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#occursAtTime">ma:occursAtTime</a>
+                      <a href="#occursAtTime">occurs at time</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#agentAt">ma:agentAt</a>
+                      <a href="#agentAt">agent at</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -555,13 +593,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#hasInitialStates">ma:hasInitialStates</a>
+                      <a href="#hasInitialStates">has initial states</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasGoalStates">ma:hasGoalStates</a>
+                      <a href="#hasGoalStates">has goal states</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -570,8 +608,8 @@ td {
             </tr>
           </table>
         </div>
-        <div class="property entity" id="AgentSubPlan">
-          <h3>Agent Sub Plan
+        <div class="property entity" id="AgentSub-Plan">
+          <h3>Agent Sub-Plan
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
           <table>
@@ -583,10 +621,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A per-agent plan describing the sequence of actions taken by a single agent within a multi-agent plan.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="#Plan">plan:Plan</a>
+                <a href="https://ai4society.github.io/planning-ontology#Plan">plan:Plan</a>
               </td>
             </tr>
             <tr>
@@ -597,19 +641,19 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#belongsToAgent">ma:belongsToAgent</a>
+                      <a href="#belongsToAgent">belongs to agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPlanCost">ma:hasPlanCost</a>
+                      <a href="#hasPlanCost">has plan cost</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#planData">ma:planData</a>
+                      <a href="#planData">has path data</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -622,7 +666,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#composedOfSubPlans">ma:composedOfSubPlans</a>
+                  <a href="#composedOfSubPlans">composed of sub-plans</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -635,13 +679,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#OriginalSubPlan">ma:OriginalSubPlan</a>
+                      <a href="#OriginalSubPlan">Original Agent Sub-Plan</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#ResolvedSubPlan">ma:ResolvedSubPlan</a>
+                      <a href="#ResolvedSubPlan">Resolved Agent Sub-Plan</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -651,7 +695,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="OriginalSubPlan">
-          <h3>Original Sub Plan
+          <h3>Original Agent Sub-Plan
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
           <table>
@@ -663,11 +707,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The initial sub-plan for an agent before any replanning is triggered by conflict resolution.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                  <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -678,7 +728,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#derivesFrom">ma:derivesFrom</a>
+                  <a href="#derivesFrom">derives from</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -686,7 +736,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="ResolvedSubPlan">
-          <h3>Resolved Sub Plan
+          <h3>Resolved Agent Sub-Plan
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
           <table>
@@ -698,11 +748,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A revised sub-plan for an agent produced by a replanning step in response to a detected conflict.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                  <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -715,19 +771,19 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#derivesFrom">ma:derivesFrom</a>
+                      <a href="#derivesFrom">derives from</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#generatedBy">ma:generatedBy</a>
+                      <a href="#generatedBy">generated by</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#resolvesConflict">ma:resolvesConflict</a>
+                      <a href="#resolvesConflict">resolves conflict</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -749,10 +805,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A global MAPF plan obtained by composing individual agent sub-plans into a coordinated, collision-free joint execution.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="#Plan">plan:Plan</a>
+                <a href="https://ai4society.github.io/planning-ontology#Plan">plan:Plan</a>
               </td>
             </tr>
             <tr>
@@ -763,31 +825,31 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#planData">ma:planData</a>
+                      <a href="#planData">has path data</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#composedOfSubPlans">ma:composedOfSubPlans</a>
+                      <a href="#composedOfSubPlans">composed of sub-plans</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasGlobalMakespan">ma:hasGlobalMakespan</a>
+                      <a href="#hasGlobalMakespan">has global makespan</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#usedAlertSet">ma:usedAlertSet</a>
+                      <a href="#usedAlertSet">used alert set</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#conflictResolutionProtocol">ma:conflictResolutionProtocol</a>
+                      <a href="#conflictResolutionProtocol">conflict resolution protocol</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -809,10 +871,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A domain constraint capturing forbidden regions or interaction patterns between agents that may lead to conflicts in the MAPF problem.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="#DomainRequirement">plan:DomainRequirement</a>
+                <a href="https://ai4society.github.io/planning-ontology#DomainRequirement">plan:DomainRequirement</a>
               </td>
             </tr>
             <tr>
@@ -823,19 +891,19 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#involvesAgents">ma:involvesAgents</a>
+                      <a href="#involvesAgents">involves agents</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#conflictType">ma:conflictType</a>
+                      <a href="#conflictType">conflict type</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#forbiddenRegion">ma:forbiddenRegion</a>
+                      <a href="#forbiddenRegion">forbidden region</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -848,7 +916,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#hasConflictConstraint">ma:hasConflictConstraint</a>
+                  <a href="#hasConflictConstraint">has conflict constraint</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -868,25 +936,31 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A contiguous segment of an agent’s path over a time interval, used for plan segmentation and visualization of movement patterns.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#belongsToAgentSegment">ma:belongsToAgentSegment</a>
+                      <a href="#belongsToAgentSegment">belongs to agent (segment)</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasValidTime">ma:hasValidTime</a>
+                      <a href="#hasValidTime">has valid time interval</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPathSequence">ma:hasPathSequence</a>
+                      <a href="#hasPathSequence">has path sequence</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -901,13 +975,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#planData">ma:planData</a>
+                      <a href="#planData">has path data</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#observedForbiddenSegment">ma:observedForbiddenSegment</a>
+                      <a href="#observedForbiddenSegment">observed forbidden segment</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -931,7 +1005,7 @@ td {
               <th>
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
-              <td><p>A structured representation of a grid cell with x and y coordinates.</p></td>
+              <td><p>A structured representation of a grid cell with x and y coordinates within the MAPF environment.</p></td>
             </tr>
             <tr>
               <th>
@@ -941,13 +1015,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#xCoordinate">ma:xCoordinate</a>
+                      <a href="#xCoordinate">x coordinate</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#yCoordinate">ma:yCoordinate</a>
+                      <a href="#yCoordinate">y coordinate</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -962,31 +1036,31 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#hasInitialLocation">ma:hasInitialLocation</a>
+                      <a href="#hasInitialLocation">has initial location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasGoalLocation">ma:hasGoalLocation</a>
+                      <a href="#hasGoalLocation">has goal location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#atLocation">ma:atLocation</a>
+                      <a href="#atLocation">at location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#conflictLocation">ma:conflictLocation</a>
+                      <a href="#conflictLocation">conflict location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#agentAt">ma:agentAt</a>
+                      <a href="#agentAt">agent at</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1008,31 +1082,37 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A description of the decision-making policy used by an agent (e.g., a learned RL policy) including configuration and training information.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#policyName">ma:policyName</a>
+                      <a href="#policyName">policy name</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#trainedOnEnvironment">ma:trainedOnEnvironment</a>
+                      <a href="#trainedOnEnvironment">trained on environment</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#observationChannels">ma:observationChannels</a>
+                      <a href="#observationChannels">observation channels</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#actionSpace">ma:actionSpace</a>
+                      <a href="#actionSpace">action space</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1041,8 +1121,8 @@ td {
             </tr>
           </table>
         </div>
-        <div class="property entity" id="ObservationMaskSpec">
-          <h3>Observation Mask Spec
+        <div class="property entity" id="ObservationMaskSpecification">
+          <h3>Observation Mask Specification
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
           <table>
@@ -1054,19 +1134,25 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A specification of observation channels and masks used by an agent policy to encode partial observability of the environment.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#hasChannel">ma:hasChannel</a>
+                      <a href="#hasChannel">has channel</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#maskDimension">ma:maskDimension</a>
+                      <a href="#maskDimension">mask dimension</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1088,37 +1174,43 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>An event representing a detected collision or conflict between agents at a specific time and location.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#conflictID">ma:conflictID</a>
+                      <a href="#conflictID">conflict ID</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#occursAtTime">ma:occursAtTime</a>
+                      <a href="#occursAtTime">occurs at time</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#conflictTypeEvent">ma:conflictTypeEvent</a>
+                      <a href="#conflictTypeEvent">conflict event type</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#involvesAgentsEvent">ma:involvesAgentsEvent</a>
+                      <a href="#involvesAgentsEvent">involves agents (event)</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#conflictLocation">ma:conflictLocation</a>
+                      <a href="#conflictLocation">conflict location</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1133,13 +1225,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#resolvesConflict">ma:resolvesConflict</a>
+                      <a href="#resolvesConflict">resolves conflict</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#alertsConflict">ma:alertsConflict</a>
+                      <a href="#alertsConflict">alerts conflict</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1161,55 +1253,61 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>An alert raised by the planner or coordinator that selects an agent and context to trigger a local replanning step to resolve a conflict.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#selectionRationale">ma:selectionRationale</a>
+                      <a href="#selectionRationale">selection rationale</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#alertID">ma:alertID</a>
+                      <a href="#alertID">alert ID</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#alertsConflict">ma:alertsConflict</a>
+                      <a href="#alertsConflict">alerts conflict</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#targetAgent">ma:targetAgent</a>
+                      <a href="#targetAgent">target agent</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#rewindWindow">ma:rewindWindow</a>
+                      <a href="#rewindWindow">rewind window</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#alertType">ma:alertType</a>
+                      <a href="#alertType">alert type</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#staticForbiddenCells">ma:staticForbiddenCells</a>
+                      <a href="#staticForbiddenCells">static forbidden cells</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#dynamicForbiddenPath">ma:dynamicForbiddenPath</a>
+                      <a href="#dynamicForbiddenPath">dynamic forbidden path</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1224,13 +1322,13 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#usedAlertSet">ma:usedAlertSet</a>
+                      <a href="#usedAlertSet">used alert set</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#triggeredBy">ma:triggeredBy</a>
+                      <a href="#triggeredBy">triggered by</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1252,43 +1350,49 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A strategy or procedure that describes how conflicts are handled and new sub-plans are generated (e.g., static vs dynamic replanning).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#triggeredBy">ma:triggeredBy</a>
+                      <a href="#triggeredBy">triggered by</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#strategyID">ma:strategyID</a>
+                      <a href="#strategyID">strategy ID</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#usedStaticReplanning">ma:usedStaticReplanning</a>
+                      <a href="#usedStaticReplanning">used static replanning</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#usedDynamicReplanning">ma:usedDynamicReplanning</a>
+                      <a href="#usedDynamicReplanning">used dynamic replanning</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#observedForbiddenCells">ma:observedForbiddenCells</a>
+                      <a href="#observedForbiddenCells">observed forbidden cells</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#observedForbiddenSegment">ma:observedForbiddenSegment</a>
+                      <a href="#observedForbiddenSegment">observed forbidden segment</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
@@ -1310,37 +1414,43 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A higher-level description of the stages or procedures implemented by a multi-agent planner, including agent selection and conflict-handling policies.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="https://w3id.org/profile/ontdoc/inDomainOf" title="Inverse of rdfs:domain. Defined in Ontology Documentation Profile">In Domain Of</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#procedureID">ma:procedureID</a>
+                      <a href="#procedureID">procedure ID</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#implementsStage">ma:implementsStage</a>
+                      <a href="#implementsStage">implements stage</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#agentSelectionPolicy">ma:agentSelectionPolicy</a>
+                      <a href="#agentSelectionPolicy">agent selection policy</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#rewindWindowDefault">ma:rewindWindowDefault</a>
+                      <a href="#rewindWindowDefault">default rewind window</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasRationale">ma:hasRationale</a>
+                      <a href="#hasRationale">procedure rationale</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1353,15 +1463,15 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#implementsProcedure">ma:implementsProcedure</a>
+                  <a href="#implementsProcedure">implements procedure</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
             </tr>
           </table>
         </div>
-        <div class="property entity" id="MultiAgentPlanner">
-          <h3>Multi Agent Planner
+        <div class="property entity" id="Multi-AgentPlanner">
+          <h3>Multi-Agent Planner
             <sup class="sup-c" title="OWL/RDFS Class">c</sup>
           </h3>
           <table>
@@ -1373,10 +1483,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>A planner capable of generating joint plans for multiple agents, potentially with integrated conflict detection and resolution mechanisms.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subClassOf" title="The subject is a subclass of a class. Defined in The RDF Schema vocabulary (RDFS)">Sub Class Of</a>
               </th>
               <td>
-                <a href="#Planner">plan:Planner</a>
+                <a href="https://ai4society.github.io/planning-ontology#Planner">plan:Planner</a>
               </td>
             </tr>
             <tr>
@@ -1387,37 +1503,37 @@ td {
                 <ul>
                   <li>
                     <span>
-                      <a href="#ofPlannerType">ma:ofPlannerType</a>
+                      <a href="#ofPlannerType">planner type</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#implementsProcedure">ma:implementsProcedure</a>
+                      <a href="#implementsProcedure">implements procedure</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#generatesPlan">ma:generatesPlan</a>
+                      <a href="#generatesPlan">generates plan</a>
                       <sup class="sup-op" title="OWL Object Property">op</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#supportsConflictDetection">ma:supportsConflictDetection</a>
+                      <a href="#supportsConflictDetection">supports conflict detection</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#communicationOverhead">ma:communicationOverhead</a>
+                      <a href="#communicationOverhead">communication overhead</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#hasPerformanceTradeoff">ma:hasPerformanceTradeoff</a>
+                      <a href="#hasPerformanceTradeoff">performance trade-off</a>
                       <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
                     </span>
                   </li>
@@ -1442,11 +1558,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent to its capabilities, as described in the CORA ontology, such as motion or sensing capabilities.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1456,7 +1578,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Capability">cora:Capability</a>
+                <a href="http://wwwIEEE1872-2015/cora#Capability">cora:Capability</a>
               </td>
             </tr>
           </table>
@@ -1474,11 +1596,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent to its initial grid location at the start of the MAPF problem.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1489,7 +1617,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1509,11 +1637,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent to its goal grid location in the MAPF problem.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1524,7 +1658,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1544,11 +1678,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Relates an agent to actions it executes as part of its plan.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1558,7 +1698,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Action">plan:Action</a>
+                <a href="https://ai4society.github.io/planning-ontology#Action">plan:Action</a>
               </td>
             </tr>
           </table>
@@ -1576,11 +1716,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates any entity (e.g., an agent or obstacle) with a grid location.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Thing">Thing</a>
+                  <a href="http://www.w3.org/2002/07/owl#Thing">Thing</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1591,7 +1737,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1611,11 +1757,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent sub-plan to the agent whose behavior it describes.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                  <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1626,7 +1778,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1634,7 +1786,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="planData">
-          <h3>plan data
+          <h3>has path data
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
@@ -1646,19 +1798,25 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates a plan (agent-level or joint) with one or more path segments representing its execution.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                      <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#JointPlan">ma:JointPlan</a>
+                      <a href="#JointPlan">Joint Plan</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -1671,7 +1829,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#AgentPathSegment">ma:AgentPathSegment</a>
+                  <a href="#AgentPathSegment">Agent Path Segment</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1679,7 +1837,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="composedOfSubPlans">
-          <h3>composed of sub plans
+          <h3>composed of sub-plans
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
@@ -1691,11 +1849,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates that a joint plan is composed of the sub-plans of individual agents.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#JointPlan">ma:JointPlan</a>
+                  <a href="#JointPlan">Joint Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1706,7 +1870,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                  <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1726,11 +1890,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a joint plan to the set of conflict alerts that were used during its construction and refinement.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#JointPlan">ma:JointPlan</a>
+                  <a href="#JointPlan">Joint Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1741,7 +1911,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1761,10 +1931,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a planning problem to the agents that participate in it.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#PlanningProblem">plan:PlanningProblem</a>
+                <a href="https://ai4society.github.io/planning-ontology#PlanningProblem">plan:PlanningProblem</a>
               </td>
             </tr>
             <tr>
@@ -1773,7 +1949,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1793,10 +1969,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates a planning problem with initial states for its agents.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#PlanningProblem">plan:PlanningProblem</a>
+                <a href="https://ai4society.github.io/planning-ontology#PlanningProblem">plan:PlanningProblem</a>
               </td>
             </tr>
             <tr>
@@ -1805,7 +1987,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#AgentState">ma:AgentState</a>
+                  <a href="#AgentState">Agent State</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1825,10 +2007,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates a planning problem with goal states for its agents.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#PlanningProblem">plan:PlanningProblem</a>
+                <a href="https://ai4society.github.io/planning-ontology#PlanningProblem">plan:PlanningProblem</a>
               </td>
             </tr>
             <tr>
@@ -1837,7 +2025,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#AgentState">ma:AgentState</a>
+                  <a href="#AgentState">Agent State</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1857,10 +2045,16 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a planning problem to conflict constraints that restrict agent interactions or regions.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
-                <a href="#PlanningProblem">plan:PlanningProblem</a>
+                <a href="https://ai4society.github.io/planning-ontology#PlanningProblem">plan:PlanningProblem</a>
               </td>
             </tr>
             <tr>
@@ -1869,7 +2063,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ConflictConstraint">ma:ConflictConstraint</a>
+                  <a href="#ConflictConstraint">Conflict Constraint</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1889,11 +2083,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Specifies the agents that are involved in a given conflict constraint.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictConstraint">ma:ConflictConstraint</a>
+                  <a href="#ConflictConstraint">Conflict Constraint</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1904,7 +2104,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1924,11 +2124,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a conflict constraint to a region that is forbidden or restricted for certain agents.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictConstraint">ma:ConflictConstraint</a>
+                  <a href="#ConflictConstraint">Conflict Constraint</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1938,7 +2144,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Region">plan:Region</a>
+                <a href="https://ai4society.github.io/planning-ontology#Region">plan:Region</a>
               </td>
             </tr>
           </table>
@@ -1956,11 +2162,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates that a resolved sub-plan is derived from a specific original sub-plan.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
                 <span>
-                  <a href="#wasDerivedFrom">was derived from</a>
+                  <a href="http://www.w3.org/ns/prov#wasDerivedFrom">was derived from</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -1971,7 +2183,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ResolvedSubPlan">ma:ResolvedSubPlan</a>
+                  <a href="#ResolvedSubPlan">Resolved Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -1982,7 +2194,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#OriginalSubPlan">ma:OriginalSubPlan</a>
+                  <a href="#OriginalSubPlan">Original Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2002,11 +2214,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Relates a resolved sub-plan to the replanning activity that generated it.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#subPropertyOf" title="The subject is a subproperty of a property. Defined in The RDF Schema vocabulary (RDFS)">Sub Property Of</a>
               </th>
               <td>
                 <span>
-                  <a href="#wasGeneratedBy">was generated by</a>
+                  <a href="http://www.w3.org/ns/prov#wasGeneratedBy">was generated by</a>
                   <sup class="sup-op" title="OWL Object Property">op</sup>
                 </span>
               </td>
@@ -2017,7 +2235,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ResolvedSubPlan">ma:ResolvedSubPlan</a>
+                  <a href="#ResolvedSubPlan">Resolved Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2028,7 +2246,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Activity">Activity</a>
+                  <a href="http://www.w3.org/ns/prov#Activity">Activity</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2050,7 +2268,7 @@ td {
               <th>
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
-              <td><p>Connects a revised plan to the conflict it solves.</p></td>
+              <td><p>Connects a revised sub-plan to the collision event it is intended to resolve.</p></td>
             </tr>
             <tr>
               <th>
@@ -2058,7 +2276,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ResolvedSubPlan">ma:ResolvedSubPlan</a>
+                  <a href="#ResolvedSubPlan">Resolved Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2069,7 +2287,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2091,7 +2309,7 @@ td {
               <th>
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
-              <td><p>Shows which alert initiated a replanning action.</p></td>
+              <td><p>Links a replanning strategy to the conflict alert that triggered it.</p></td>
             </tr>
             <tr>
               <th>
@@ -2099,7 +2317,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2110,7 +2328,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2130,19 +2348,25 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a collision event or agent state to the time instant at which it occurs.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <ul>
                   <li>
                     <span>
-                      <a href="#CollisionEvent">ma:CollisionEvent</a>
+                      <a href="#CollisionEvent">Collision Event</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
                   <li>
                     <span>
-                      <a href="#AgentState">ma:AgentState</a>
+                      <a href="#AgentState">Agent State</a>
                       <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                     </span>
                   </li>
@@ -2154,13 +2378,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Instant">time:Instant</a>
+                <a href="http://www.w3.org/2006/time#Instant">time:Instant</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="involvesAgentsEvent">
-          <h3>involves agents event
+          <h3>involves agents (event)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
@@ -2172,11 +2396,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a collision event to the agents involved in that event.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2187,7 +2417,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2207,11 +2437,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Specifies the grid location at which a collision event occurs.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2222,7 +2458,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2242,11 +2478,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates a conflict alert with the collision event it refers to.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2257,7 +2499,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2277,11 +2519,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates the agent selected as the target for replanning in response to a conflict alert.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2292,7 +2540,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2300,7 +2548,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="belongsToAgentSegment">
-          <h3>belongs to agent segment
+          <h3>belongs to agent (segment)
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
@@ -2312,11 +2560,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent path segment to the agent whose movement it represents.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPathSegment">ma:AgentPathSegment</a>
+                  <a href="#AgentPathSegment">Agent Path Segment</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2327,7 +2581,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2335,7 +2589,7 @@ td {
           </table>
         </div>
         <div class="property entity" id="hasValidTime">
-          <h3>has valid time
+          <h3>has valid time interval
             <sup class="sup-op" title="OWL Object Property">op</sup>
           </h3>
           <table>
@@ -2347,11 +2601,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates a path segment with the time interval during which it is executed.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPathSegment">ma:AgentPathSegment</a>
+                  <a href="#AgentPathSegment">Agent Path Segment</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2361,7 +2621,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Interval">time:Interval</a>
+                <a href="http://www.w3.org/2006/time#Interval">time:Interval</a>
               </td>
             </tr>
           </table>
@@ -2379,11 +2639,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Represents the ordered sequence of grid locations for a path segment as an RDF list.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPathSegment">ma:AgentPathSegment</a>
+                  <a href="#AgentPathSegment">Agent Path Segment</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2393,7 +2659,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#List">List</a>
+                <a href="http://www.w3.org/1999/02/22-rdf-syntax-ns#List">List</a>
               </td>
             </tr>
           </table>
@@ -2411,11 +2677,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a replanning strategy to the specific cells observed as forbidden during execution.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2425,7 +2697,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Cell">plan:Cell</a>
+                <a href="https://ai4society.github.io/planning-ontology#Cell">plan:Cell</a>
               </td>
             </tr>
           </table>
@@ -2443,11 +2715,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a replanning strategy to a path segment that is treated as forbidden during replanning.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2458,7 +2736,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#AgentPathSegment">ma:AgentPathSegment</a>
+                  <a href="#AgentPathSegment">Agent Path Segment</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2478,11 +2756,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links a multi-agent planner to the procedures it implements as part of its pipeline.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2493,7 +2777,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2513,11 +2797,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Relates a multi-agent planner to the plans it generates.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2527,7 +2817,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#Plan">plan:Plan</a>
+                <a href="https://ai4society.github.io/planning-ontology#Plan">plan:Plan</a>
               </td>
             </tr>
           </table>
@@ -2545,11 +2835,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Links an agent state to the grid location where the agent is at that state.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentState">ma:AgentState</a>
+                  <a href="#AgentState">Agent State</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2560,7 +2856,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2571,7 +2867,7 @@ td {
       <div class="section" id="datatypeproperties">
         <h2>Datatype Properties</h2>
         <div class="property entity" id="hasAgentID">
-          <h3>has agent id
+          <h3>has agent ID
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -2583,11 +2879,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Associates an agent with its identifier from the underlying MAPF planner or environment.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#Agent">ma:Agent</a>
+                  <a href="#Agent">Agent</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2597,7 +2899,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2615,11 +2917,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The x-coordinate of a grid location.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2629,7 +2937,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#integer">xsd:integer</a>
+                <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
               </td>
             </tr>
           </table>
@@ -2647,11 +2955,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The y-coordinate of a grid location.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#GridLocation">ma:GridLocation</a>
+                  <a href="#GridLocation">Grid Location</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2661,7 +2975,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#integer">xsd:integer</a>
+                <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
               </td>
             </tr>
           </table>
@@ -2679,11 +2993,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Stores the cost of an agent sub-plan (e.g., path length or time).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentSubPlan">ma:AgentSubPlan</a>
+                  <a href="#AgentSub-Plan">Agent Sub-Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2693,7 +3013,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#decimal">xsd:decimal</a>
+                <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a>
               </td>
             </tr>
           </table>
@@ -2711,11 +3031,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Stores the makespan (total execution time) of a joint plan.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#JointPlan">ma:JointPlan</a>
+                  <a href="#JointPlan">Joint Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2725,7 +3051,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#decimal">xsd:decimal</a>
+                <a href="http://www.w3.org/2001/XMLSchema#decimal">xsd:decimal</a>
               </td>
             </tr>
           </table>
@@ -2743,11 +3069,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the high-level conflict resolution protocol or strategy used for a joint plan.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#JointPlan">ma:JointPlan</a>
+                  <a href="#JointPlan">Joint Plan</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2757,7 +3089,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2775,11 +3107,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the type of conflict constrained (e.g., vertex conflict, edge conflict).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictConstraint">ma:ConflictConstraint</a>
+                  <a href="#ConflictConstraint">Conflict Constraint</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2789,7 +3127,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2809,7 +3147,7 @@ td {
               <th>
                 <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
               </th>
-              <td><p>Explains why a specific agent was chosen for a conflict alert.</p></td>
+              <td><p>Provides a textual explanation of why a specific agent was chosen as the target of a conflict alert.</p></td>
             </tr>
             <tr>
               <th>
@@ -2817,7 +3155,7 @@ td {
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2827,7 +3165,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2845,11 +3183,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The human-readable name of an agent policy (e.g., the RL architecture or configuration name).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPolicy">ma:AgentPolicy</a>
+                  <a href="#AgentPolicy">Agent Policy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2859,7 +3203,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2877,11 +3221,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the environment or scenario distribution on which the agent policy was trained.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPolicy">ma:AgentPolicy</a>
+                  <a href="#AgentPolicy">Agent Policy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2891,7 +3241,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2909,11 +3259,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Lists the observation channels exposed to the policy (e.g., grid layers, agent positions, obstacles).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPolicy">ma:AgentPolicy</a>
+                  <a href="#AgentPolicy">Agent Policy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2923,7 +3279,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2941,11 +3297,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the available actions for the policy (e.g., up/down/left/right/stay).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#AgentPolicy">ma:AgentPolicy</a>
+                  <a href="#AgentPolicy">Agent Policy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2955,7 +3317,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -2973,11 +3335,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Names an observation channel included in an observation mask specification.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ObservationMaskSpec">ma:ObservationMaskSpec</a>
+                  <a href="#ObservationMaskSpecification">Observation Mask Specification</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -2987,7 +3355,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3005,11 +3373,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the dimensionality or shape of the observation mask (e.g., 11x11 window).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ObservationMaskSpec">ma:ObservationMaskSpec</a>
+                  <a href="#ObservationMaskSpecification">Observation Mask Specification</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3019,13 +3393,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="conflictID">
-          <h3>conflict id
+          <h3>conflict ID
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3037,11 +3411,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Identifier for a collision event in the planner’s logs or the knowledge graph.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3051,13 +3431,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="conflictTypeEvent">
-          <h3>conflict type event
+          <h3>conflict event type
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3069,11 +3449,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Specifies the type of collision event (e.g., vertex conflict, edge conflict) detected in execution.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#CollisionEvent">ma:CollisionEvent</a>
+                  <a href="#CollisionEvent">Collision Event</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3083,13 +3469,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="alertID">
-          <h3>alert id
+          <h3>alert ID
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3101,11 +3487,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Identifier for a conflict alert in the planner logs or knowledge graph.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3115,7 +3507,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3133,11 +3525,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>The temporal window (in timesteps) over which an agent may rewind during replanning triggered by this alert.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3147,7 +3545,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#integer">xsd:integer</a>
+                <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
               </td>
             </tr>
           </table>
@@ -3165,11 +3563,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the type of conflict alert (e.g., static, dynamic, local, global).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3179,7 +3583,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3197,11 +3601,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Encodes static forbidden cells communicated in the alert, e.g., as a serialized list or mask.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3211,7 +3621,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3229,11 +3639,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Encodes a dynamic forbidden path (e.g., moving obstacle trajectory) communicated in the alert.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ConflictAlert">ma:ConflictAlert</a>
+                  <a href="#ConflictAlert">Conflict Alert</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3243,13 +3659,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="strategyID">
-          <h3>strategy id
+          <h3>strategy ID
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3261,11 +3677,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Identifier for a replanning strategy instance.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3275,7 +3697,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3293,11 +3715,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates whether the strategy used static replanning constraints (e.g., fixed forbidden cells).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3307,7 +3735,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#boolean">xsd:boolean</a>
+                <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
               </td>
             </tr>
           </table>
@@ -3325,11 +3753,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates whether the strategy used dynamic replanning constraints (e.g., moving forbidden paths).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#ReplanningStrategy">ma:ReplanningStrategy</a>
+                  <a href="#ReplanningStrategy">Replanning Strategy</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3339,13 +3773,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#boolean">xsd:boolean</a>
+                <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="procedureID">
-          <h3>procedure id
+          <h3>procedure ID
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3357,11 +3791,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Identifier for a planner procedure or stage.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3371,7 +3811,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3389,11 +3829,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes which pipeline stage (e.g., conflict detection, agent selection) a procedure implements.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3403,7 +3849,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3421,11 +3867,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes the policy used to select agents for replanning or conflict resolution (e.g., earliest arrival, random).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3435,13 +3887,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="rewindWindowDefault">
-          <h3>rewind window default
+          <h3>default rewind window
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3453,11 +3905,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Default temporal rewind window used by the procedure when triggering replanning.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3467,13 +3925,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#integer">xsd:integer</a>
+                <a href="http://www.w3.org/2001/XMLSchema#integer">xsd:integer</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="hasRationale">
-          <h3>has rationale
+          <h3>procedure rationale
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3485,11 +3943,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Provides a textual rationale or description of a planner procedure’s design and trade-offs.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#PlannerProcedure">ma:PlannerProcedure</a>
+                  <a href="#PlannerProcedure">Planner Procedure</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3499,13 +3963,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="ofPlannerType">
-          <h3>of planner type
+          <h3>planner type
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3517,11 +3981,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates the type or family of a multi-agent planner (e.g., RL-based, search-based, hybrid).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3531,7 +4001,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3549,11 +4019,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Indicates whether the planner has built-in conflict detection capabilities.</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3563,7 +4039,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#boolean">xsd:boolean</a>
+                <a href="http://www.w3.org/2001/XMLSchema#boolean">xsd:boolean</a>
               </td>
             </tr>
           </table>
@@ -3581,11 +4057,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Describes communication overhead characteristics of the planner (e.g., centralized, distributed low-bandwidth).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3595,13 +4077,13 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
         </div>
         <div class="property entity" id="hasPerformanceTradeoff">
-          <h3>has performance tradeoff
+          <h3>performance trade-off
             <sup class="sup-dp" title="OWL Datatype Property">dp</sup>
           </h3>
           <table>
@@ -3613,11 +4095,17 @@ td {
             </tr>
             <tr>
               <th>
+                <a class="hover_property" href="http://purl.org/dc/terms/description" title="An account of the resource. Defined in DCMI Metadata Terms">Description</a>
+              </th>
+              <td><p>Captures performance trade-offs of the planner (e.g., speed vs. solution quality, communication vs. optimality).</p></td>
+            </tr>
+            <tr>
+              <th>
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#domain" title="A domain of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Domain</a>
               </th>
               <td>
                 <span>
-                  <a href="#MultiAgentPlanner">ma:MultiAgentPlanner</a>
+                  <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
                   <sup class="sup-c" title="OWL/RDFS Class">c</sup>
                 </span>
               </td>
@@ -3627,7 +4115,7 @@ td {
                 <a class="hover_property" href="http://www.w3.org/2000/01/rdf-schema#range" title="A range of the subject property. Defined in The RDF Schema vocabulary (RDFS)">Range</a>
               </th>
               <td>
-                <a href="#string">xsd:string</a>
+                <a href="http://www.w3.org/2001/XMLSchema#string">xsd:string</a>
               </td>
             </tr>
           </table>
@@ -3743,13 +4231,13 @@ td {
               <a href="#AgentState">Agent State</a>
             </li>
             <li>
-              <a href="#AgentSubPlan">Agent Sub Plan</a>
+              <a href="#AgentSub-Plan">Agent Sub-Plan</a>
             </li>
             <li>
-              <a href="#OriginalSubPlan">Original Sub Plan</a>
+              <a href="#OriginalSubPlan">Original Agent Sub-Plan</a>
             </li>
             <li>
-              <a href="#ResolvedSubPlan">Resolved Sub Plan</a>
+              <a href="#ResolvedSubPlan">Resolved Agent Sub-Plan</a>
             </li>
             <li>
               <a href="#JointPlan">Joint Plan</a>
@@ -3767,7 +4255,7 @@ td {
               <a href="#AgentPolicy">Agent Policy</a>
             </li>
             <li>
-              <a href="#ObservationMaskSpec">Observation Mask Spec</a>
+              <a href="#ObservationMaskSpecification">Observation Mask Specification</a>
             </li>
             <li>
               <a href="#CollisionEvent">Collision Event</a>
@@ -3782,7 +4270,7 @@ td {
               <a href="#PlannerProcedure">Planner Procedure</a>
             </li>
             <li>
-              <a href="#MultiAgentPlanner">Multi Agent Planner</a>
+              <a href="#Multi-AgentPlanner">Multi-Agent Planner</a>
             </li>
           </ul>
         </li>
@@ -3810,10 +4298,10 @@ td {
               <a href="#belongsToAgent">belongs to agent</a>
             </li>
             <li>
-              <a href="#planData">plan data</a>
+              <a href="#planData">has path data</a>
             </li>
             <li>
-              <a href="#composedOfSubPlans">composed of sub plans</a>
+              <a href="#composedOfSubPlans">composed of sub-plans</a>
             </li>
             <li>
               <a href="#usedAlertSet">used alert set</a>
@@ -3852,7 +4340,7 @@ td {
               <a href="#occursAtTime">occurs at time</a>
             </li>
             <li>
-              <a href="#involvesAgentsEvent">involves agents event</a>
+              <a href="#involvesAgentsEvent">involves agents (event)</a>
             </li>
             <li>
               <a href="#conflictLocation">conflict location</a>
@@ -3864,10 +4352,10 @@ td {
               <a href="#targetAgent">target agent</a>
             </li>
             <li>
-              <a href="#belongsToAgentSegment">belongs to agent segment</a>
+              <a href="#belongsToAgentSegment">belongs to agent (segment)</a>
             </li>
             <li>
-              <a href="#hasValidTime">has valid time</a>
+              <a href="#hasValidTime">has valid time interval</a>
             </li>
             <li>
               <a href="#hasPathSequence">has path sequence</a>
@@ -3895,7 +4383,7 @@ td {
           </h4>
           <ul class="second">
             <li>
-              <a href="#hasAgentID">has agent id</a>
+              <a href="#hasAgentID">has agent ID</a>
             </li>
             <li>
               <a href="#xCoordinate">x coordinate</a>
@@ -3937,13 +4425,13 @@ td {
               <a href="#maskDimension">mask dimension</a>
             </li>
             <li>
-              <a href="#conflictID">conflict id</a>
+              <a href="#conflictID">conflict ID</a>
             </li>
             <li>
-              <a href="#conflictTypeEvent">conflict type event</a>
+              <a href="#conflictTypeEvent">conflict event type</a>
             </li>
             <li>
-              <a href="#alertID">alert id</a>
+              <a href="#alertID">alert ID</a>
             </li>
             <li>
               <a href="#rewindWindow">rewind window</a>
@@ -3958,7 +4446,7 @@ td {
               <a href="#dynamicForbiddenPath">dynamic forbidden path</a>
             </li>
             <li>
-              <a href="#strategyID">strategy id</a>
+              <a href="#strategyID">strategy ID</a>
             </li>
             <li>
               <a href="#usedStaticReplanning">used static replanning</a>
@@ -3967,7 +4455,7 @@ td {
               <a href="#usedDynamicReplanning">used dynamic replanning</a>
             </li>
             <li>
-              <a href="#procedureID">procedure id</a>
+              <a href="#procedureID">procedure ID</a>
             </li>
             <li>
               <a href="#implementsStage">implements stage</a>
@@ -3976,13 +4464,13 @@ td {
               <a href="#agentSelectionPolicy">agent selection policy</a>
             </li>
             <li>
-              <a href="#rewindWindowDefault">rewind window default</a>
+              <a href="#rewindWindowDefault">default rewind window</a>
             </li>
             <li>
-              <a href="#hasRationale">has rationale</a>
+              <a href="#hasRationale">procedure rationale</a>
             </li>
             <li>
-              <a href="#ofPlannerType">of planner type</a>
+              <a href="#ofPlannerType">planner type</a>
             </li>
             <li>
               <a href="#supportsConflictDetection">supports conflict detection</a>
@@ -3991,7 +4479,7 @@ td {
               <a href="#communicationOverhead">communication overhead</a>
             </li>
             <li>
-              <a href="#hasPerformanceTradeoff">has performance tradeoff</a>
+              <a href="#hasPerformanceTradeoff">performance trade-off</a>
             </li>
           </ul>
         </li>
